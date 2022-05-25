@@ -31,4 +31,50 @@ function operate(a,operator,b) {
         } 
 }
 
+
+
+
 console.log(operate(1,"plus",2));
+
+
+const equal = document.querySelector(".equal");
+
+const topPart = document.querySelector(".top");
+
+const input = document.createElement('p');
+
+input.classList.add("input");
+
+let operand = +"";
+
+let oper = +"";
+
+equal.addEventListener("click", function() {
+    alert(operate(operand,oper,operand));
+});
+
+const addition = document.querySelector(".plus");
+
+addition.addEventListener("click", function() {
+    input.textContent = "+";
+    topPart.appendChild(input);
+    oper = "plus";
+});
+
+let one = document.querySelector(".one");
+
+one.addEventListener("click", function() {
+    input.textContent = "1";
+    topPart.appendChild(input);
+    operand += 1;
+});
+
+const two = document.querySelector(".two");
+
+two.addEventListener("click", function() {
+
+    input.textContent = "2";
+    topPart.appendChild(input);
+    operand += 2;
+});
+

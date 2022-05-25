@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .calculator {
@@ -19,7 +20,20 @@ body {
     background-color: rgb(75, 75, 75);
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    
 }
+
+.top p {
+    padding-right: 20px;
+    font-size: 50px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
 
 .circles {
     margin-top: 20px;

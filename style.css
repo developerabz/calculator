@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.calculator {
+    width: 300px;
+    height: 470px;
+    background-color: brown;
+    border-radius: 40px;
+    border: 10px black solid;
+}
+
+.top {
+    width: 300px;
+    height: 100px;
+    background-color: rgb(75, 75, 75);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.circles {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 8px;
+}
+
+.firstrow {
+    display: flex;
+    gap: 8px;
+}
+
+.firstrow .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(95, 24, 24);
+
+}
+
+.lastrow {
+    display: flex;
+    gap: 8px;
+    align-self: flex-end;
+    margin-right: 16px;
+}
+
+.lastrow .circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(95, 24, 24);
+    
+}
+
+.long {
+    width: 120px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: rgb(95, 24, 24);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle button {
+    background-color: rgba(128, 128, 128, 0);
+    border: 0;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.long button {
+    background-color: rgba(128, 128, 128, 0);
+    border: 0;
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+button .clear {
+    font-size: 30px;
+}
+
+.circle:hover,
+.long:hover {
+    background-color: rgb(51, 14, 14);
+}

@@ -45,12 +45,14 @@ const input = document.createElement('p');
 
 input.classList.add("input");
 
-let operand = +"";
+let operandFirst = +"";
 
-let oper = +"";
+let operandSecond = +"";
+
+let oper = "";
 
 equal.addEventListener("click", function() {
-    alert(operate(operand,oper,operand));
+    alert(operate(operandFirst,oper,operandSecond));
 });
 
 const addition = document.querySelector(".plus");
@@ -64,9 +66,13 @@ addition.addEventListener("click", function() {
 let one = document.querySelector(".one");
 
 one.addEventListener("click", function() {
+    const input = document.createElement('p');
+
+input.classList.add("input");
     input.textContent = "1";
     topPart.appendChild(input);
-    operand += 1;
+    
+    
 });
 
 const two = document.querySelector(".two");

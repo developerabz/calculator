@@ -92,21 +92,24 @@ body {
     background-color: rgba(128, 128, 128, 0);
     border: 0;
     color: #ffffff;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
 }
 
 .long button {
     background-color: rgba(128, 128, 128, 0);
     border: 0;
     color: #ffffff;
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 600;
+    width: 120px;
+    height: 60px;
+    border-radius: 30px;
 }
 
-button .clear {
-    font-size: 30px;
-}
 
 .circle:hover,
 .long:hover {

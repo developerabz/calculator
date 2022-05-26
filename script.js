@@ -22,6 +22,7 @@ function plusminus(a) {
     return -(a);
 }
 
+
 console.log(add(1,2));
 console.log(multiply(1,2));
 console.log(subtract(1,2));
@@ -70,9 +71,7 @@ input.classList.add("input");
 
 
 
-equal.addEventListener("click", function() {
-    alert(operate(operandFirst,oper,operandSecond));
-});
+
 
 /*const addition = document.querySelector(".plus");
 
@@ -130,7 +129,7 @@ two.addEventListener("click", function() {
         operandSecond += "2";
     }
 });*/
-const array = ["one","two","three","four","five","six","seven","eight","nine"];
+const array = ["zero","one","two","three","four","five","six","seven","eight","nine"];
 const arrayMath = ["plus", "minus", "multiple", "divide", "percent","plusminus"];
 
 const buttons = document.querySelectorAll("button");
@@ -144,12 +143,12 @@ buttons.forEach((button) => {
                 const input = document.createElement('p');
     
                 input.classList.add("input");
-                input.textContent = `${i+1}`;
+                input.textContent = `${i}`;
                 topPart.appendChild(input);
                 if (oper == "") {
-                    operandFirst += `${i+1}`;
+                    operandFirst += `${i}`;
                 } else {
-                    operandSecond += `${i+1}`;
+                    operandSecond += `${i}`;
                 }
             }
         }
@@ -167,16 +166,49 @@ buttons.forEach((button) => {
 
         
         /// take this out of this large event listener
-        if (button.classList.contains("clear")) {
-            const inputItems = document.querySelectorAll("input");
-
-            inputItems.forEach((inpu) => {
-                inpu.classList.remove("input");
-            })
-        }
+        
         // and try again after making it as similar
         // as possible to the sketchgrid usage of clear button
 
     });
 });
 
+const cleary = document.querySelector(".clear");
+
+cleary.addEventListener ("click", () => {
+    const inputItems = document.querySelectorAll(".input");
+    inputItems.forEach((input) => {
+        input.textContent = "";
+        topPart.removeChild(input);
+        operandFirst = "";
+
+        operandSecond = "";
+        oper = "";
+    });
+});
+
+equal.addEventListener("click", function() {
+    const inputItems = document.querySelectorAll(".input");
+
+    inputItems.forEach((input) => {
+        input.classList.remove("input");
+        input.textContent = "";
+        topPart.removeChild(input);
+        
+    });
+    
+        
+        input.textContent = operate(operandFirst,oper,operandSecond);
+        topPart.appendChild(input);
+        /*operandFirst = "";
+        operandSecond = "";
+        oper = "";
+        if (operandFirst === "") {
+            operandFirst += 'operate(operandFirst,oper,operandSecond)}';
+        }*/
+        
+  
+    
+        
+    
+});

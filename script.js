@@ -11,7 +11,7 @@ function subtract(a,b) {
 }
 
 function divide(a,b) {
-    return a / b;
+    return (a / b).toFixed(2);
 }
 
 function percent(a) {
@@ -165,11 +165,6 @@ buttons.forEach((button) => {
         }
 
         
-        /// take this out of this large event listener
-        
-        // and try again after making it as similar
-        // as possible to the sketchgrid usage of clear button
-
     });
 });
 
@@ -197,18 +192,24 @@ equal.addEventListener("click", function() {
         
     });
     
-        
-        input.textContent = operate(operandFirst,oper,operandSecond);
+    if (oper == "divide" && operandSecond == 0) {
+        input.textContent = "Nice Try!";
+        topPart.appendChild(input); 
+    } else {
+        input.textContent = `${operate(operandFirst,oper,operandSecond)}`;
         topPart.appendChild(input);
-        /*operandFirst = "";
+        operandFirst = operate(operandFirst,oper,operandSecond);
         operandSecond = "";
         oper = "";
-        if (operandFirst === "") {
-            operandFirst += 'operate(operandFirst,oper,operandSecond)}';
-        }*/
+    }
+    
+
+        
         
   
     
-        
+        // Optional: figure out how to take the operate into the
+        // operandFirst and use it for next operation
+        // Next step: align the button css with the circle css
     
 });

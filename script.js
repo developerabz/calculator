@@ -1,3 +1,5 @@
+
+
 function add(a,b) {
     return +a + +b;
 }
@@ -23,10 +25,6 @@ function plusminus(a) {
 }
 
 
-console.log(add(1,2));
-console.log(multiply(1,2));
-console.log(subtract(1,2));
-console.log(divide(1,2));
 
 let operandFirst = "";
 
@@ -69,66 +67,7 @@ const input = document.createElement('p');
 
 input.classList.add("input");
 
-
-
-
-
-/*const addition = document.querySelector(".plus");
-
-addition.addEventListener("click", function() {
-    const input = document.createElement('p');
-
-    input.classList.add("input");
-    input.textContent = "+";
-    topPart.appendChild(input);
-    oper = "plus";
-});*/
-
-///let one = document.querySelector(".one");
-
-// need to have const input and classlist add
-// so that you ca have the same digit on screen
-// next convert event listener to one giant one
-// by query selection of buttons and then 
-//classify them using if statement and
-// condition of if it contains a class for each
-// button. also need to figure out how to seperate
-// operand before and after the operator
-// might use a giant if statement then multiple
-// if else statements for each button inside them
-// or the other way around
-
-
-/*one.addEventListener("click", function() {
-    const input = document.createElement('p');
-
-    input.classList.add("input");
-    input.textContent = "1";
-    topPart.appendChild(input);
-    if (oper == "") {
-        operandFirst += "1";
-    } else {
-        operandSecond += "1";
-    }
-    
-    
-    
-});*/
-
-/*const two = document.querySelector(".two");
-
-two.addEventListener("click", function() {
-    const input = document.createElement('p');
-
-    input.classList.add("input");
-    input.textContent = "2";
-    topPart.appendChild(input);
-    if (oper == "") {
-        operandFirst += "2";
-    } else {
-        operandSecond += "2";
-    }
-});*/
+//this places the respective operand or operator on the display part of the caluclator
 const array = ["zero","one","two","three","four","five","six","seven","eight","nine"];
 const arrayMath = ["plus", "minus", "multiple", "divide", "percent","plusminus"];
 
@@ -168,25 +107,15 @@ buttons.forEach((button) => {
     });
 });
 
-const cleary = document.querySelector(".clear");
 
-cleary.addEventListener ("click", () => {
-    const inputItems = document.querySelectorAll(".input");
-    inputItems.forEach((input) => {
-        input.textContent = "";
-        topPart.removeChild(input);
-        operandFirst = "";
 
-        operandSecond = "";
-        oper = "";
-    });
-});
+//this is for the actual operation and reassigning of the operation to
+//the first operand parameter
 
 equal.addEventListener("click", function() {
     const inputItems = document.querySelectorAll(".input");
 
     inputItems.forEach((input) => {
-        input.classList.remove("input");
         input.textContent = "";
         topPart.removeChild(input);
         
@@ -203,13 +132,19 @@ equal.addEventListener("click", function() {
         oper = "";
     }
     
+});
 
-        
-        
-  
-    
-        // Optional: figure out how to take the operate into the
-        // operandFirst and use it for next operation
-        // Next step: align the button css with the circle css
-    
+// this removes everything in the display part of the calculator
+const cleary = document.querySelector(".clear");
+
+cleary.addEventListener ("click", () => {
+    const inputItems = document.querySelectorAll(".input");
+    inputItems.forEach((input) => {
+        input.textContent = "";
+        topPart.removeChild(input);
+        operandFirst = "";
+
+        operandSecond = "";
+        oper = "";
+    });
 });

@@ -1,15 +1,15 @@
 
 
 function add(a,b) {
-    return +a + +b;
+    return (+a + +b).toFixed(2);
 }
 
 function multiply(a,b) {
-    return a * b;
+    return (a * b).toFixed(2);
 }
 
 function subtract(a,b) {
-    return a - b;
+    return (a - b).toFixed(2);
 }
 
 function divide(a,b) {
@@ -17,11 +17,11 @@ function divide(a,b) {
 }
 
 function percent(a) {
-    return (a/100);
+    return (a/100).toFixed(2);
 }
 
 function plusminus(a) {
-    return -(a);
+    return (-(a)).toFixed(2);
 }
 
 
@@ -56,7 +56,7 @@ function operate(a,operator,b) {
 
 
 
-console.log(operate(1,"plus",2));
+// console.log(operate(1,"plus",2));
 
 
 const equal = document.querySelector(".equal");
@@ -68,7 +68,7 @@ const input = document.createElement('p');
 input.classList.add("input");
 
 //this places the respective operand or operator on the display part of the caluclator
-const array = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+const array = ["zero","one","two","three","four","five","six","seven","eight","nine", "decimal"];
 const arrayMath = ["plus", "minus", "multiple", "divide", "percent","plusminus"];
 
 const buttons = document.querySelectorAll("button");
@@ -76,18 +76,18 @@ const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
 
     button.addEventListener("click", function() {
-
+        
         for (let i = 0; i < array.length; i++) {
             if (button.classList.contains(array[i])) {
                 const input = document.createElement('p');
     
                 input.classList.add("input");
-                input.textContent = `${i}`;
+                input.textContent = button.textContent;
                 topPart.appendChild(input);
                 if (oper == "") {
-                    operandFirst += `${i}`;
+                    operandFirst += button.textContent;
                 } else {
-                    operandSecond += `${i}`;
+                    operandSecond += button.textContent;
                 }
             }
         }

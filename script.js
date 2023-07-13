@@ -33,30 +33,26 @@ let operandSecond = "";
 let oper = "";
 
 function operate(a,operator,b) {
-
     operandFirst = Number(operandFirst);
     operandSecond = Number(operandSecond);
-        if (operator === "plus") {
+        if (operator === "+") {
             return add(a,b);
-        } else if (operator === "multiple") {
+        } else if (operator === "*") {
             return multiply(a,b);
-        } else if (operator === "minus") {
+        } else if (operator === "-") {
             return subtract(a,b);
-        } else if (operator === "divide") {
+        } else if (operator === "/") {
             return divide(a,b);
-        } else if (operator === "percent") {
+        } else if (operator === "%") {
             return percent(a);
         } else if (operator === "plusminus") {
             return plusminus(a);
-        } 
-
-    
+        }
 }
 
 
 
 
-// console.log(operate(1,"plus",2));
 
 
 const equal = document.querySelector(".equal");
@@ -69,18 +65,16 @@ input.classList.add("input");
 
 //this places the respective operand or operator on the display part of the caluclator
 const array = ["zero","one","two","three","four","five","six","seven","eight","nine", "decimal"];
-const arrayMath = ["plus", "minus", "multiple", "divide", "percent","plusminus"];
+const arrayMath = ["+", "-", "*", "/", "%","plusminus"];
 
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
 
     button.addEventListener("click", function() {
-        
         for (let i = 0; i < array.length; i++) {
             if (button.classList.contains(array[i])) {
                 const input = document.createElement('p');
-    
                 input.classList.add("input");
                 input.textContent = button.textContent;
                 topPart.appendChild(input);
@@ -103,10 +97,34 @@ buttons.forEach((button) => {
             }
         }
 
-        
     });
+
 });
 
+const operatorSymbols = ["+", "-", "/", "*"];
+
+document.addEventListener("keypress", (event) => {
+    if (Number(event.key)) {
+        const input = document.createElement('p');
+        input.classList.add("input");
+        input.textContent = event.key;
+        topPart.appendChild(input);
+        if (oper == "") {
+            operandFirst += event.key;
+        } else {
+            operandSecond += event.key;
+        }
+    }
+
+    if (operatorSymbols.includes(event.key)) {
+        const input = document.createElement('p');
+
+        input.classList.add("input");
+        input.textContent = event.key;
+        topPart.appendChild(input);
+        oper = event.key;
+    }
+});
 
 
 //this is for the actual operation and reassigning of the operation to
@@ -118,12 +136,12 @@ equal.addEventListener("click", function() {
     inputItems.forEach((input) => {
         input.textContent = "";
         topPart.removeChild(input);
-        
     });
-    
-    if (oper == "divide" && operandSecond == 0) {
+    if ((oper == "divide" && operandSecond == 0)) {
         input.textContent = "Nice Try!";
-        topPart.appendChild(input); 
+        topPart.appendChild(input);
+    } else if (operandSecond === "") {
+        input.textContent = operandFirst;
     } else {
         input.textContent = `${operate(operandFirst,oper,operandSecond)}`;
         topPart.appendChild(input);
@@ -131,20 +149,56 @@ equal.addEventListener("click", function() {
         operandSecond = "";
         oper = "";
     }
-    
+});
+
+document.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        const inputItems = document.querySelectorAll(".input");
+
+        inputItems.forEach((input) => {
+            input.textContent = "";
+            topPart.removeChild(input);
+        });
+        if ((oper == "divide" && operandSecond == 0)) {
+            input.textContent = "Nice Try!";
+            topPart.appendChild(input);
+        } else if (operandSecond === "") {
+            input.textContent = operandFirst;
+            topPart.appendChild(input);
+        } else {
+            input.textContent = `${operate(operandFirst,oper,operandSecond)}`;
+            topPart.appendChild(input);
+            operandFirst = operate(operandFirst,oper,operandSecond);
+            operandSecond = "";
+            oper = "";
+        }
+    }
 });
 
 // this removes everything in the display part of the calculator
 const cleary = document.querySelector(".clear");
-
-cleary.addEventListener ("click", () => {
-    const inputItems = document.querySelectorAll(".input");
-    inputItems.forEach((input) => {
-        input.textContent = "";
-        topPart.removeChild(input);
-        operandFirst = "";
-
-        operandSecond = "";
-        oper = "";
+const clearClick = () => {
+    cleary.addEventListener ("click", () => {
+        const inputItems = document.querySelectorAll(".input");
+        inputItems.forEach((input) => {
+            input.textContent = "";
+            topPart.removeChild(input);
+            operandFirst = "";
+            operandSecond = "";
+            oper = "";
+        });
     });
+}
+clearClick();
+document.addEventListener("keypress", (event) => {
+    if (event.key === "Delete") {
+        const inputItems = document.querySelectorAll(".input");
+        inputItems.forEach((input) => {
+            input.textContent = "";
+            topPart.removeChild(input);
+            operandFirst = "";
+            operandSecond = "";
+            oper = "";
+        });
+    }
 });
